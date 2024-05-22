@@ -1,0 +1,32 @@
+{
+  "name": "web-custom-data-zh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "chunk": "node --loader ts-node/esm --experimental-specifier-resolution=node src/chunk",
+    "extra:data": "node --loader ts-node/esm --experimental-specifier-resolution=node src/extraData",
+    "extra:desc": "node --loader ts-node/esm --experimental-specifier-resolution=node src/extraDesc",
+    "replace:data": "node --loader ts-node/esm --experimental-specifier-resolution=node src/replaceData",
+    "build": "pnpm run extra:data && pnpm run extra:desc && pnpm run replace:data",
+    "translate": "node --loader ts-node/esm --experimental-specifier-resolution=node src/translate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "*",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/web-custom-data": "^0.4.9",
+    "eslint": "^8.57.0",
+    "html-to-text": "^9.0.5",
+    "pptr-gpt": "^1.0.23",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "puppeteer": "^22.9.0"
+  }
+}
