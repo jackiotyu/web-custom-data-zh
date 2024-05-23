@@ -16567,23 +16567,23 @@
         },
         {
           "name": "U+1E00-1EFF",
-          "description": "Latin Extended Additional. Vietnamese, German captial sharp s, Medievalist, Latin general use."
+          "description": "拉丁扩展附加。越南语，德国大写尖s，中世纪学者，拉丁通用。"
         },
         {
           "name": "U+250-2AF",
-          "description": "International Phonetic Alphabet Extensions."
+          "description": "国际音标扩展。"
         },
         {
           "name": "U+370-3FF",
-          "description": "Greek and Coptic."
+          "description": "希腊语和科普特语。"
         },
         {
           "name": "U+1F00-1FFF",
-          "description": "Greek Extended. Accented characters for polytonic Greek."
+          "description": "希腊语扩展。多音希腊语的重音字符。"
         },
         {
           "name": "U+400-4FF",
-          "description": "Cyrillic."
+          "description": "西里尔字母。"
         },
         {
           "name": "U+500-52F",
@@ -26096,12 +26096,5 @@
   "fontWeight": "字重",
   "borderImage": "边框图像",
   "transitionDuration": "过渡持续时间",
-  "transitionProperty": "过渡属性",
-  "属性描述": "拉丁 - 艾克森普尔盖德茨梯度，来自西班牙罗马墙壁上的模具浮雕，具有光滑、连续、渐变的表面。",
-  "属性值": "不适用",
-  "相关属性": {
-    "品牌": "不适用",
-    "产地": "不适用"
-  },
-  "行业应用": "油漆、室内装饰、艺术、墙壁装饰、建筑等"
+  "transitionProperty": "过渡属性"
 }
