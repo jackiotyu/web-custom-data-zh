@@ -1,7 +1,7 @@
 {
   "name": "web-custom-data-zh",
   "version": "1.0.0",
-  "description": "",
+  "description": "@vscode/web-custom-data 中文版",
   "main": "index.js",
   "scripts": {
     "chunk": "node --loader ts-node/esm --experimental-specifier-resolution=node src/chunk",
@@ -11,8 +11,14 @@
     "build": "pnpm run extra:data && pnpm run extra:desc && pnpm run replace:data",
     "translate": "node --loader ts-node/esm --experimental-specifier-resolution=node src/translate"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["@vscode/web-custom-data", "Chinese"],
+  "author": "jackiotyu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackiotyu/web-custom-data-zh"
+  },
+  "homepage": "https://github.com/jackiotyu/web-custom-data-zh#readme",
+  "bugs": "https://github.com/jackiotyu/web-custom-data-zh/issues",
   "license": "MIT",
   "devDependencies": {
     "@types/html-to-text": "^9.0.4",
@@ -28,5 +34,8 @@
   },
   "dependencies": {
     "puppeteer": "^22.9.0"
-  }
+  },
+  "files": [
+    "data"
+  ]
 }
