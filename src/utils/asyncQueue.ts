@@ -1,36 +1,50 @@
 export class AsyncQueue {
-    private concurrency: number;
-    private queue: (() => Promise<void>)[];
-    private running: number;
-    private allTasks: Promise<void>[];
+    private queue: Array<() => Promise<any>> = [];
+    private runningTasks: number = 0;
+    private maxConcurrent: number;
+    private idleCallbacks: Array<() => void> = [];
 
-    constructor(concurrency: number) {
-        this.concurrency = concurrency;
-        this.queue = [];
-        this.running = 0;
-        this.allTasks = [];
+    constructor(maxConcurrent: number) {
+        this.maxConcurrent = maxConcurrent;
     }
-    enqueue<T>(task: () => Promise<T>): Promise<T> {
-        const taskPromise = new Promise<T>((resolve, reject) => {
-            this.queue.push(() => task().then(resolve).catch(reject));
-            this.runNext();
-        });
 
-        this.allTasks.push(taskPromise.then(() => undefined).catch(() => undefined)); // Convert T to void and handle errors
-        return taskPromise;
-    }
-    private runNext(): void {
-        if (this.running >= this.concurrency || this.queue.length === 0) {
+    private runNextTask(): void {
+        if (this.runningTasks >= this.maxConcurrent || this.queue.length === 0) {
             return;
         }
-        const task = this.queue.shift()!;
-        this.running++;
-        task().finally(() => {
-            this.running--;
-            this.runNext();
-        });
+
+        const task = this.queue.shift();
+        if (!task) {
+            return;
+        }
+
+        this.runningTasks++;
+        task()
+            .catch((err) => console.error('Task error:', err))
+            .finally(() => this.onTaskComplete());
     }
-    onIdle(): Promise<void> {
-        return Promise.all(this.allTasks).then(() => undefined);
+
+    private onTaskComplete(): void {
+        this.runningTasks--;
+
+        if (this.queue.length === 0 && this.runningTasks === 0) {
+            this.idleCallbacks.forEach((callback) => callback());
+            this.idleCallbacks = [];
+        } else {
+            this.runNextTask();
+        }
+    }
+
+    enqueue(task: () => Promise<any>): void {
+        this.queue.push(task);
+        this.runNextTask();
+    }
+
+    onIdle(callback: (...rest: any[]) => void): void {
+        if (this.queue.length === 0 && this.runningTasks === 0) {
+            callback();
+        } else {
+            this.idleCallbacks.push(callback);
+        }
     }
 }

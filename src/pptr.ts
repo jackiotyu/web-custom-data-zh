@@ -117,17 +117,26 @@ const createChat = async (text: string): Promise<{
     await pptr.close();
   };
 
-  await page.waitForSelector("#prompt-textarea", {
-    timeout: 60_000
-  });
-  const response = await send(text);
+  try {
+    await page.waitForSelector("#prompt-textarea", {
+      timeout: 5_000
+    });
+    const response = await send(text);
+    return {
+      response,
+      history,
+      send,
+      close,
+    };
+  } catch {
+    return {
+      close,
+      send,
+      history,
+      response: '',
+    };
+  }
 
-  return {
-    response,
-    history,
-    send,
-    close,
-  };
 };
 
 const client = { createChat };
