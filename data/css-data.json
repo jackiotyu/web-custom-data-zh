@@ -16482,7 +16482,7 @@
             "IE5.5",
             "O9.2"
           ],
-          "description": "The contents of the element are considered to be inside a separate, independent paragraph."
+          "description": "元素的内容被视为单独的、独立的段落。"
         },
         {
           "name": "isolate-override",
@@ -16494,7 +16494,7 @@
             "IE5.5",
             "O9.2"
           ],
-          "description": "This combines the isolation behavior of 'isolate' with the directional override behavior of 'bidi-override'"
+          "description": "这将'isolate'的隔离行为与'bidi-override'的方向覆盖行为结合在一起。"
         },
         {
           "name": "normal",
@@ -26072,29 +26072,5 @@
       ],
       "description": "伪元素 ::view-transition-old 表示视图转换的“旧”视图状态 - 在转换之前的旧视图的静态截图。"
     }
-  ],
-  "backgroundClip": "内容区域",
-  "borderRadius": "圆角",
-  "transitionTimingFunction": "过渡时间函数",
-  "backgroundSize": "背景尺寸",
-  "boxShadow": "阴影",
-  "backgroundImage": "背景图像",
-  "transformOrigin": "变换原点",
-  "transition": "过渡",
-  "backgroundColor": "背景颜色",
-  "textDecoration": "文本装饰",
-  "border": "边框",
-  "textTransform": "文本转换",
-  "textShadow": "文本阴影",
-  "width": "宽度",
-  "outline": "轮廓",
-  "borderWidth": "边框宽度",
-  "transitionDelay": "过渡延迟",
-  "font": "字体",
-  "borderColor": "边框颜色",
-  "borderStyle": "边框样式",
-  "fontWeight": "字重",
-  "borderImage": "边框图像",
-  "transitionDuration": "过渡持续时间",
-  "transitionProperty": "过渡属性"
+  ]
 }
