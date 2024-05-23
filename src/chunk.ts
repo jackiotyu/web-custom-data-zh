@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-const inputFile = path.join(__dirname, './cache-prepare/browsers.css-data.json');
-const outputDir = path.join(__dirname, './cache-prepare/chunk');
-const MAX_LENGTH = 500;
+const inputFile = path.join(__dirname, './cache-prepare/browsers.html-data.json');
+const outputDir = path.join(__dirname, './cache-prepare/chunk-html-2');
+const MAX_LENGTH = 1800;
 
 if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir);
@@ -27,7 +27,7 @@ fs.readFile(inputFile, 'utf8', (err, data) => {
     let chunkIndex = 1;
 
     const saveChunk = (chunk: { [key: string]: any }) => {
-        const filePath = path.join(outputDir, `css-data-chunk-${chunkIndex}.json`);
+        const filePath = path.join(outputDir, `html-data-chunk-${chunkIndex}.json`);
         fs.writeFile(filePath, JSON.stringify(chunk, null, 2), (writeErr) => {
             if (writeErr) {
                 console.error('写入文件失败:', writeErr);

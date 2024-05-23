@@ -10,7 +10,7 @@ const queue = new AsyncQueue(5);
 const cache = {};
 
 async function translate(jsonStr: string) {
-    const { close, send } = await translator.createChat(`你是一个专业的前端专家，现在帮我把一份英文css属性描述的json文档翻译成中文，不需要改变json的key，key保持原样。只需要翻译后的内容`);
+    const { close, send } = await translator.createChat(`你是一个专业的前端专家，现在帮我把一份英文html属性描述的json文档翻译成中文，不需要改变json的key，key保持原样。链接保持原样。注意需要在翻译后输出markdown可以复制的json内容`);
     try {
         const str = await send(JSON.stringify(jsonStr));
         close();
@@ -25,7 +25,7 @@ async function translate(jsonStr: string) {
 
 async function addTask(filepath: string) {
     queue.enqueue(async () => {
-        const outFilepath = path.join(__dirname, `./cache-translated/${path.basename(filepath)}`);
+        const outFilepath = path.join(__dirname, `./cache-translated/html-data-2/${path.basename(filepath)}`);
         const exist = await fileExist(outFilepath);
         if (exist) {
             console.log('文件已存在,跳过', outFilepath);
@@ -45,14 +45,14 @@ async function addTask(filepath: string) {
 
 async function main() {
     console.log('start');
-    const jsonFileList = await readFilesInDirectory(path.join(__dirname, './cache-prepare/chunk'));
+    const jsonFileList = await readFilesInDirectory(path.join(__dirname, './cache-prepare/chunk-html-2'));
     if (!jsonFileList) {
         console.log('没有数据');
         return;
     }
     await Promise.all(jsonFileList.map((filepath) => addTask(filepath)));
     await new Promise(r => queue.onIdle(r));
-    fs.writeFile(path.join(__dirname, `./cache-translated/css-data.json`), JSON.stringify(cache, null, 2));
+    fs.writeFile(path.join(__dirname, `./cache-translated/html-data.json`), JSON.stringify(cache, null, 2));
     console.log('end');
 }
 main();

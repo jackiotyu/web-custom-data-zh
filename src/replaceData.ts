@@ -2,12 +2,12 @@ import fs from 'fs';
 import path from 'path';
 // import data from './cache-translated/css-data.json';
 import { readFilesInDirectory } from './utils/readFilesInDirectory';
-import baseData from './data/browsers.css-data.json';
+import baseData from './data/browsers.html-data.json';
 
 async function main() {
     console.log('start');
-    const reg = /css-data-chunk-(\d+)\.json/;
-    const fileList = await (await readFilesInDirectory(path.join(__dirname, './cache-translated'))).filter(i => reg.test(i));
+    const reg = /html-data-chunk-(\d+)\.json/;
+    const fileList = await (await readFilesInDirectory(path.join(__dirname, './cache-translated/html-data-2'))).filter(i => reg.test(i));
 
     for (const file of fileList) {
         const data = JSON.parse(fs.readFileSync(file, 'utf-8'));
@@ -23,7 +23,7 @@ async function main() {
         }
      }
     fs.writeFileSync(
-        path.join(__dirname, '../data/css-data.json'),
+        path.join(__dirname, '../data/html-data.json'),
         JSON.stringify(baseData, null, 2),
     );
     console.log('done');
