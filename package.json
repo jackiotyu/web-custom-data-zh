@@ -11,7 +11,10 @@
     "build": "pnpm run extra:data && pnpm run extra:desc && pnpm run replace:data",
     "translate": "node --loader ts-node/esm --experimental-specifier-resolution=node src/translate"
   },
-  "keywords": ["@vscode/web-custom-data", "Chinese"],
+  "keywords": [
+    "@vscode/web-custom-data",
+    "Chinese"
+  ],
   "author": "jackiotyu",
   "repository": {
     "type": "git",
@@ -29,11 +32,9 @@
     "eslint": "^8.57.0",
     "html-to-text": "^9.0.5",
     "pptr-gpt": "^1.0.23",
+    "puppeteer": "^22.9.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "puppeteer": "^22.9.0"
   },
   "files": [
     "data"
