@@ -1,6 +1,6 @@
 {
   "name": "web-custom-data-zh",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "@vscode/web-custom-data 中文版",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,6 @@
     "@vscode/web-custom-data": "^0.4.9",
     "eslint": "^8.57.0",
     "html-to-text": "^9.0.5",
-    "pptr-gpt": "^1.0.23",
     "puppeteer": "^22.9.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
